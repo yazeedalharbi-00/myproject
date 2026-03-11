@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admin Panel - Yazeed Alharbi CV</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid #870c0e;
+      padding-bottom: 1rem;
+    }
+
+    .admin-header h1 {
+      margin: 0;
+      color: #870c0e;
+    }
+
+    .admin-header .nav-links {
+      margin-right: 2rem;
+    }
+    .admin-header .nav-links a {
+      color: #870c0e;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 0.5rem;
+    }
+    .admin-header .nav-links a:hover {
+      text-decoration: underline;
+    }
+    .admin-header .user-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .admin-header .logout-btn {
+      padding: 0.5rem 1rem;
+      background: #870c0e;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .admin-header .logout-btn:hover {
+      background: #a01821;
+    }
+
+    .admin-section {
+      background: #fff;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .admin-section h2 {
+      color: #870c0e;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #870c0e;
+      padding-bottom: 0.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+
+    table thead {
+      background: #f0f0f0;
+    }
+
+    table th,
+    table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+      font-weight: 600;
+      color: #252525;
+    }
+
+    table tr:hover {
+      background: #f9f9f9;
+    }
+
+    .delete-btn {
+      padding: 0.4rem 0.8rem;
+      background: #dc3545;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .delete-btn:hover {
+      background: #c82333;
+    }
+
+    .make-admin-btn {
+      padding: 0.4rem 0.8rem;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      margin-right: 0.5rem;
+    }
+
+    .make-admin-btn:hover {
+      background: #218838;
+    }
+
+    .admin-badge {
+      display: inline-block;
+      background: #870c0e;
+      color: #fff;
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 2rem;
+      color: #666;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid #870c0e;
+      text-align: center;
+    }
+
+    .stat-card h3 {
+      margin: 0;
+      color: #666;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    .stat-card .number {
+      font-size: 2rem;
+      color: #870c0e;
+      font-weight: 800;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="admin-container">
+    <div class="admin-header">
+      <h1>Admin Panel</h1>
+      <div class="nav-links">
+        <a href="index.html">CV Page</a> |
+        <a href="signin.html">Sign In</a> |
+        <a href="signup.html">Sign Up</a>
+      </div>
+      <div class="user-info">
+        <span id="userNameDisplay"></span>
+        <button class="logout-btn" onclick="handleLogout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <h3>Total Users</h3>
+        <div class="number" id="totalUsers">0</div>
+      </div>
+      <div class="stat-card">
+        <h3>Total Comments</h3>
+        <div class="number" id="totalComments">0</div>
+      </div>
+      <div class="stat-card">
+        <h3>Admin Count</h3>
+        <div class="number" id="adminCount">0</div>
+      </div>
+    </div>
+
+    <div class="admin-section">
+      <h2>All Users</h2>
+      <table id="usersTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Joined</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="usersList">
+          <tr>
+            <td colspan="5" class="empty-state">No users found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="admin-section">
+      <h2>All Comments</h2>
+      <table id="commentsTable">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Email</th>
+            <th>Comment</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="commentsList">
+          <tr>
+            <td colspan="5" class="empty-state">No comments found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    const currentUser = getCurrentUser();
+
+    if (!currentUser || !currentUser.isAdmin) {
+      window.location.href = 'signin.html';
+    }
+
+    document.getElementById('userNameDisplay').textContent = `Welcome, ${currentUser.name}`;
+
+    function loadAdminData() {
+      const users = getUsers();
+      const comments = getAllComments();
+
+      // Update stats
+      document.getElementById('totalUsers').textContent = users.length;
+      document.getElementById('totalComments').textContent = comments.length;
+      document.getElementById('adminCount').textContent = users.filter(u => u.isAdmin).length;
+
+      // Load users
+      const usersList = document.getElementById('usersList');
+      if (users.length === 0) {
+        usersList.innerHTML = '<tr><td colspan="5" class="empty-state">No users found</td></tr>';
+      } else {
+        usersList.innerHTML = users.map(user => `
+          <tr>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+            <td>${new Date(user.createdAt).toLocaleDateString()}</td>
+            <td>
+              ${user.isAdmin ? '<span class="admin-badge">Admin</span>' : 'User'}
+            </td>
+            <td>
+              ${!user.isAdmin ? `<button class="make-admin-btn" onclick="makeUserAdmin(${user.id})">Make Admin</button>` : ''}
+              <button class="delete-btn" onclick="deleteUser(${user.id})">Delete</button>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      // Load comments
+      const commentsList = document.getElementById('commentsList');
+      if (comments.length === 0) {
+        commentsList.innerHTML = '<tr><td colspan="5" class="empty-state">No comments found</td></tr>';
+      } else {
+        commentsList.innerHTML = comments.map(comment => `
+          <tr>
+            <td><strong>${comment.name}</strong></td>
+            <td>${comment.email}</td>
+            <td>${comment.comment}</td>
+            <td>${new Date(comment.createdAt).toLocaleDateString()}</td>
+            <td>
+              <button class="delete-btn" onclick="deleteCommentAdmin(${comment.id})">Delete</button>
+            </td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    function makeUserAdmin(userId) {
+      if (confirm('Make this user an admin?')) {
+        makeAdmin(userId);
+        loadAdminData();
+      }
+    }
+
+    function deleteUser(userId) {
+      const users = getUsers();
+      const user = users.find(u => u.id === userId);
+      if (confirm(`Delete user "${user.name}" and all their comments?`)) {
+        deleteUserComments(userId);
+        const updatedUsers = users.filter(u => u.id !== userId);
+        saveUsers(updatedUsers);
+        loadAdminData();
+      }
+    }
+
+    function deleteCommentAdmin(commentId) {
+      if (confirm('Delete this comment?')) {
+        deleteComment(commentId);
+        loadAdminData();
+      }
+    }
+
+    function handleLogout() {
+      if (confirm('Are you sure you want to logout?')) {
+        logout();
+        window.location.href = 'signin.html';
+      }
+    }
+
+    loadAdminData();
+  </script>
+</body>
+
+</html>

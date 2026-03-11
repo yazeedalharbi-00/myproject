@@ -1,0 +1,287 @@
+html {
+  font-size: 16px;
+}
+
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #e7e7e7;
+  font-family: 'Nunito Sans', sans-serif;
+ }
+
+h1, h3, h2 {
+  text-transform: uppercase;
+  font-weight: 400;  
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  color: #870c0e;
+  font-weight: 600;
+  font-size: 1rem;  
+}
+
+h1, p {
+  color: #252525;
+}
+
+.container {  
+  display: flex;  
+}
+
+.left {
+  background-color: #d7d6d8;
+  display: flex;  
+  flex-direction: column;
+  flex-shrink: 1;
+  flex-grow: 0.5;
+  width: 18rem;
+
+}
+
+.left-content {
+  margin: 0 10%;
+}
+
+.left-content-items {
+  position: relative;
+  top: -3.5rem;
+}
+
+.left-content-items h1 {
+  border-bottom: 1px solid #870c0e;
+  width: 100%;
+  margin-top: 30%; 
+}
+
+.contact p, .interests p, .languages p {
+  text-transform: uppercase;
+  margin: 0 0;  
+}
+
+.photo img{
+  display: flex; 
+  width: 100%;
+  height: auto;
+}
+
+.name {
+  position: relative;
+  line-height: 1.7rem; 
+  letter-spacing: 0.2rem;  
+}
+
+#zhanna {
+  color: #dedede;
+}
+
+.contact {
+  display: flex;     
+  height: 5rem;
+  width: 100%;
+}
+
+.cont-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;    
+}
+
+.cont-item img {
+  width: 1.5rem;  
+  margin-right: 1.5rem; 
+}
+
+.about-me {
+  line-height: 2rem;
+}
+
+.interests-content {
+  display: inline-flex;
+  height: 15rem;
+  width: 100%;  
+}
+
+.int {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  
+}
+
+.int img {
+  width: 0.5rem;  
+  margin-right: 2rem;
+}
+
+.int p {
+  line-height: 0.9rem;
+}
+
+.right {
+  margin: 0 8%;
+  display: block;
+  max-width: 700px;
+  width: 100%;  
+}
+
+.right h1 {
+  border-bottom: 1px solid #870c0e;
+  width: 100%;
+  margin-top: 10%; 
+}
+
+.right h2 {
+  margin-top: 4%;
+  font-size: 1.3rem;
+}
+
+.right p, i {
+  margin-top: 0.5%;
+}
+
+.skills-content {
+  display: flex;
+  flex-flow: column wrap;  
+}
+
+.adobe-icons, .skl-list {
+  display: inline-flex;
+  justify-content: space-between;
+  margin-top: 3%;  
+}
+
+.skl{
+  width: 20rem;
+  margin-right: 2rem;  
+}
+
+.adobe-icons img {
+  width: 3.5rem;
+  height: auto;
+  margin-right: 3%;
+  margin-bottom: 5%;
+
+}
+    
+.lang-content {
+  display: inline-flex;
+  height: 10rem;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+ }
+
+.lang {
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  line-height: 0.9rem;   
+}
+
+.lang-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;   
+  width: 4.5rem;       
+}
+
+.lang-img img {
+  height: 1rem;
+}
+
+.title {
+  display: inline-block;
+  width:100%;
+}
+
+/* comment section styling */
+#comment-section {
+  background: #fff;
+  padding: 1rem;
+  margin: 2rem 0;
+  border: 1px solid #870c0e;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+#comment-section label {
+  flex: 0 0 100%;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+#comment-section input {
+  flex: 1 1 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+#comment-section button {
+  align-self: flex-end;
+  padding: 0.5rem 1rem;
+  background: #870c0e;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+#comment-section button:hover {
+  background: #a01821;
+}
+
+#commentsDisplay {
+  margin-top: 1rem;
+}
+#commentsDisplay p {
+  background: #f5f5f5;
+  padding: 0.5rem;
+  border-radius: 3px;
+  margin: 0.25rem 0;
+}
+
+/* download button styling */
+#downloadBtn {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.6rem 1.2rem;
+  background: #870c0e;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+#downloadBtn:hover {
+  background: #a01821;
+}
+
+
+.title-dec {
+  font-size: 8rem;
+  opacity: 0.1;
+  text-transform: uppercase;
+  font-weight: 900;
+  width: 100;
+  float: right;
+}
+
+.exptitle {
+  position:absolute;
+  top: -1.4rem;
+}
+
+.edutitle {
+  position:absolute;
+}
+
+.skltitle{
+  position:absolute;
+}
+
+#dec-skl {
+  font-size: 20rem;
+}

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+ <link rel="stylesheet" type="text/css" href="style.css">
+<head>
+  <title>Yazeed Alharbi </title>
+ 
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="left">
+
+      <div class="photo">
+        <img src="#">
+      </div>
+
+      <div class="left-content">
+
+        <div class="name">
+          <h1>Yazeed Alharbi</h1>
+          <h3>Web Devloper</h3>
+        </div>
+
+        <div class="left-content-items">
+          <h1>contact me</h1>
+          <div class="contact">
+
+            <div class="cont-item">
+            </div>
+            <div class="cont-item" id="contacttext">
+              <p>yalharbi108@gmail.com</p>
+              <p>+966 543 407975</p>
+            </div>
+          </div>
+
+          <div class="about-me">
+            <h1>about me</h1>
+            <p>Starting my recent career path with basics of web and graphic design I found myself passionate with giving it life by coding it. I love to see how an idea develops and finally goes to its realization.</p>
+            <p>I am constantly upgrading my skills and strongly believe that there is no end to selfdevelopment both in personal and professional ways. </p>
+          </div>
+
+          <div class="interests">
+            <h1>interests</h1>
+            <div class="interests-content">
+              <div class="int"></div>
+              <div class="int">
+                <p>Development</p>
+                <p>Coding</p>
+                <p>solving problems</p>
+                <p>Travelling</p>
+                <p>Mathematics</p>
+                <p>Science</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="languages">
+            <h1>languages</h1>
+            <div class="lang-content">
+              <div class="lang">
+                <p>arabic</p>
+                <p>english</p>
+                
+              </div>
+              <div class="lang-img"></div>
+              
+            </div>
+          </div>
+ <div id="comment-section">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Your name">
+      <br>
+      <label for="email">Email:</label>
+      
+      <input type="email" id="email" name="email" placeholder="your@example.com">
+      <br>
+
+      <label for="comment">Comment:</label>
+      <input type="text" id="comment" name="comment" placeholder="Your comment here">
+      <button id="sendComment">Send</button>
+      
+    </div>
+    <button id="downloadBtn">Download CV</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+
+      <div class="experience">
+        <div class="title">
+          <h1>Experience</h1></div>
+        <h2>Web - Coding - Web Developer</h2>
+        <i>aramco  / Saudi Arabia (03.2020 - 06.2021) </i>
+
+        <p>Development in web layouts, animated and static banners, newsletters, IMs, popups. Design and animation of commercial advertisements, openers and video displays.
+          Teamwork, that needed strong communication with
+          project managers and finding best solutions to fit all company departments.</p>
+
+        <h2>Data processing Specialist</h2>
+        <i>aramco  / Saudi Arabia  (09.2019 - 10.2019)</i>
+        <p>Working with data in ERP systems. Work that teached me accuracy, responsibility and to be strict to deadlines.</p>
+
+      </div>
+
+      <div class="education">
+        <div class="title">
+          <h1>Education</h1>
+          <div class="edutitle">
+          </div>
+        </div>
+        <h2>Bachelor of siencs computer sciences</h2>
+        <i>Bahrain - college of technology (2020 - 2025)</i>
+
+        <h2>Graphic Design</h2>
+        <i>Coursera.org course by CALARTS / online (2016)</i>
+
+        <h2>Environment concept Art</h2>
+        <i>Smirnov art school / online (2017)</i>
+
+        <h2>Web Design</h2>
+        <i>Coursera.org course by University of Michigan. Codecadamy.com courses (2017)</i>
+      </div>
+
+      <div class="skills">
+
+        <div class="title">
+          <h1>Skills</h1>
+          <div class="skltitle">
+          </div>
+        </div>
+        <div class="skills-content">
+          <div class="adobe-icons">
+          </div>
+
+          <div class="skl-list">
+            <div class="skl">
+              <p>HTML5</p>
+              <p>CSS3</p>
+              <p>JavaScript</p>
+            </div>
+
+            <div class="skl">
+              <p>2D Animation</p>
+              <p>HTML5 Animation</p>
+              <p>Web deployment </p>
+            </div>
+
+            <div class="skl">
+              <p>Layout</p>
+              <p>Typography</p>
+              <p>Web-design</p>
+            </div>
+
+            <div class="skl">
+              <p></p>
+              <p>Photography</p>
+              <p>Photomanipulation</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <footer>
+    <div id="commentsDisplay"></div>
+    
+    <p style="text-align: center;">Copyright © 2024 <a href="mailto:yalharbi108@gmail.com">Yazeed Alharbi</a>. All rights reserved.</p>
+    
+  </footer>
+ 
+  <script>
+    const commentsKey = 'comments';
+
+    function loadComments() {
+      const stored = localStorage.getItem(commentsKey);
+      const arr = stored ? JSON.parse(stored) : [];
+      const display = document.getElementById('commentsDisplay');
+      display.innerHTML = '';
+      arr.forEach(c => {
+        const p = document.createElement('p');
+        p.innerHTML = `<strong>${c.name}</strong> (${c.email}): ${c.comment}`;
+        display.appendChild(p);
+      });
+    }
+
+    function addComment() {
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const commentInput = document.getElementById('comment');
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const comment = commentInput.value.trim();
+      if (!name || !email || !comment) return;
+      const stored = localStorage.getItem(commentsKey);
+      const arr = stored ? JSON.parse(stored) : [];
+      arr.push({ name, email, comment });
+      localStorage.setItem(commentsKey, JSON.stringify(arr));
+      nameInput.value = '';
+      emailInput.value = '';
+      commentInput.value = '';
+      loadComments();
+    }
+
+    function downloadSnapshot() {
+      const commentSection = document.getElementById('comment-section');
+      const commentsDisplay = document.getElementById('commentsDisplay');
+      const downloadBtn = document.getElementById('downloadBtn');
+      // hide elements
+      commentSection.style.display = 'none';
+      commentsDisplay.style.display = 'none';
+      downloadBtn.style.display = 'none';
+
+      html2canvas(document.body).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'yazeed-cv.png';
+        link.href = canvas.toDataURL();
+        link.click();
+        // restore
+        commentSection.style.display = '';
+        commentsDisplay.style.display = '';
+        downloadBtn.style.display = '';
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadComments();
+      document.getElementById('sendComment').addEventListener('click', addComment);
+      document.getElementById('downloadBtn').addEventListener('click', downloadSnapshot);
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>
